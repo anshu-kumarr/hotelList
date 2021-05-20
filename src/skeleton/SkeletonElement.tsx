@@ -1,9 +1,5 @@
-import React, { ReactElement } from "react";
-import { RootStateOrAny, useSelector } from "react-redux";
-import styled from "styled-components";
+import React from "react";
 import SkeletonCard from "./SkeletonCard";
-
-interface Props {}
 
 function SkeletonElement() {
   const state = Array(6).fill(0);

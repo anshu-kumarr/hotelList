@@ -8,9 +8,9 @@ import axios from "axios";
 function HotelList() {
   const dispatch = useDispatch();
   function handleClick() {
-    axios.get("https://reqres.in/api/users?page=2").then((response) => {
-      const response1 = response.data.data;
-      const data = [...response1];
+    axios.get("https://reqres.in/api/users?page=2").then((res) => {
+      const response = res.data.data;
+      const data = [...response];
       dispatch({
         type: "INITIALIZE",
         payload: { data, count: response.data.total },
@@ -63,12 +63,9 @@ const HotelListDisplay = styled.div<{ toggle: Boolean }>`
   }
   ${(props) =>
     props.toggle
-      ? `
-width:50%;
-transition: all 300ms ease-out;
-`
-      : `width:100%;
-      transition: width 300ms ease-out;margin:0 auto;`}
+      ? `width:50%;transition: all 300ms ease-out;`
+      : `width:100%;transition: width 300ms ease-out;margin:0 auto;`}
+
   @media(max-width:576px) {
     width: 100%;
   }

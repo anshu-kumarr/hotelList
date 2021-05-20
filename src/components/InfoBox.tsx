@@ -7,13 +7,20 @@ import styled from "styled-components";
 interface Props {
   title: string;
 }
+interface stateType {
+  toggle: boolean;
+  tar: HTMLElement | undefined;
+}
 
 const InfoBox = (props: Props) => {
   useEffect(() => setToggle({ toggle: true, tar: start.current }), []);
   const start = useRef();
-  const [state, setToggle] = useState({ toggle: true, tar: start.current });
-  function handleClick(e: any) {
-    setToggle((ps) => {
+  const [state, setToggle] = useState<stateType>({
+    toggle: true,
+    tar: start.current,
+  });
+  function handleClick(e: React.MouseEvent<HTMLInputElement>) {
+    setToggle((ps: any) => {
       if (ps.tar !== e.target) return { toggle: !ps.toggle, tar: e.target };
       else return ps;
     });
@@ -35,8 +42,7 @@ const InfoBox = (props: Props) => {
           Reviews
         </ReviewButton>
       </InfoTab>
-      <ToggleContainer toggle={state.toggle}>
-        {/* {state.toggle ? <Information toggle={state.toggle} /> : <Reviews />} */}
+      <ToggleContainer>
         <Information toggle={state.toggle} />
         <Reviews toggle={state.toggle} />
       </ToggleContainer>
@@ -65,7 +71,6 @@ const InfoTitle = styled.div`
   text-align: center;
 `;
 const Hr = styled.hr`
-  /* box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.1); */
   background: rgba(0, 0, 0, 0.2);
 `;
 const InfoTab = styled.div`
@@ -73,7 +78,7 @@ const InfoTab = styled.div`
   margin-bottom: 10px;
   position: relative;
 `;
-const InfoButton = styled.div<{ toggle: Boolean; ref: any }>`
+const InfoButton = styled.div<{ toggle: boolean; ref: any }>`
   cursor: pointer;
   padding: 3px;
   margin-bottom: 5px;
@@ -82,7 +87,7 @@ const InfoButton = styled.div<{ toggle: Boolean; ref: any }>`
   width: 50%;
   ${({ toggle }) => (toggle ? `color:#42adef` : ``)}
 `;
-const ReviewButton = styled.div<{ toggle: Boolean }>`
+const ReviewButton = styled.div<{ toggle: boolean }>`
   cursor: pointer;
   padding: 3px;
   align-items: center;
@@ -96,13 +101,12 @@ const ReviewButton = styled.div<{ toggle: Boolean }>`
   `}
 `;
 
-const ToggleContainer = styled.div<any>`
+const ToggleContainer = styled.div`
   position: relative;
   height: 52vh;
-  /* ${({ toggle }) => (toggle ? `overflow:auto` : `overflow:scroll`)} */
 `;
 
-const TabIndicator = styled.div<any>`
+const TabIndicator = styled.div<{ toggle: boolean }>`
   position: absolute;
   height: 5px;
   width: 50%;

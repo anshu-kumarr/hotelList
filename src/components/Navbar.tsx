@@ -13,7 +13,7 @@ export default function Navbar() {
     const filteredData = search(e.target.value, state);
     dispatch({ type: "ADD_TO_DISPLAY", payload: filteredData });
   }
-  console.log(showMenu);
+
   return (
     <NavBarContainer>
       <div
@@ -121,5 +121,3 @@ const Hamburger = styled.div`
     justify-content: flex-end;
   }
 `;
-const HamburgerComponent = styled.div``;
-const HamDropDown = styled.div``;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { RouteComponentProps, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 interface props {
   title: string;
@@ -13,19 +13,12 @@ function HotelDetail(props: props) {
   }
   return (
     <HotelDetailContainer onClick={handleRoute}>
-      <HotelImage
-        src={
-          "http://www.jjtravelonline.com/images/inner-services/hotel-inner.png"
-        }
-      />
+      <HotelImage src={"/assets/image/hotel-inner.png"} />
       <HotelInfo>
         <Availability>Entire Apartment</Availability>
         <Title>{props.title}</Title>
         <Popularity>
-          <img
-            src={"https://image.flaticon.com/icons/png/512/906/906338.png"}
-            alt='feed'
-          ></img>
+          <img src={"assets/image/list-icon.png"} alt='feed'></img>
           <p>
             <span>RARE FIND</span> This place is usually booked.
           </p>

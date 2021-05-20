@@ -11,14 +11,14 @@ import NavBarButton from "./components/NavBarButton";
 function App() {
   const dispatch = useDispatch();
   const state = useSelector((state: any) => state.hotelList);
-  useEffect(() => {
+
+  function apiCall() {
     if (state.length <= 0) {
       setTimeout(
         () =>
           axios.get("https://reqres.in/api/users?page=1").then((response) => {
             const response1 = response.data.data;
             const data = [...response1];
-            console.log(response, data);
             dispatch({
               type: "INITIALIZE",
               payload: { data: data, count: response.data.total },
@@ -28,7 +28,10 @@ function App() {
         2000
       );
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }
+
+  useEffect(() => {
+    apiCall();
   }, []);
 
   return (

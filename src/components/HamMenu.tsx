@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-function HamMenu({ show }: any) {
+interface props {
+  show: boolean;
+}
+
+function HamMenu({ show }: props) {
   return (
     <Menu show={show}>
-      <div>Become A Host</div>
-      <div>Register</div>
-      <div>Login</div>
-      <div>Help</div>
+      <MenuItem>Become A Host</MenuItem>
+      <MenuItem>Register</MenuItem>
+      <MenuItem>Login</MenuItem>
+      <MenuItem>Help</MenuItem>
     </Menu>
   );
 }
@@ -26,3 +30,5 @@ const Menu = styled.div<any>`
   cursor: pointer;
   ${({ show }) => (show ? "display:block;" : "display:none;")}
 `;
+
+const MenuItem = styled.div``;

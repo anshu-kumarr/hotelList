@@ -14,7 +14,6 @@ ReactDOM.render(
         <Route
           path={"/info/:id"}
           render={({ match, history }) => {
-            // console.log(history)
             return (
               <HotelInfo
                 name={match.params.id}

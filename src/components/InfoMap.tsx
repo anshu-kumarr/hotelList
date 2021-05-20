@@ -7,7 +7,7 @@ import {
 } from "@react-google-maps/api";
 import styled from "styled-components";
 
-function InfoMap(props: any): ReactElement {
+function InfoMap(): ReactElement {
   const mapStyles = {
     height: "100%",
     width: "100%",
@@ -17,6 +17,7 @@ function InfoMap(props: any): ReactElement {
     lat: 41.3851,
     lng: 2.1734,
   };
+
   const [selected, setSelected] = useState<any>({});
 
   const onSelect = (item: any) => {

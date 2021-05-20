@@ -3,13 +3,15 @@ import styled from "styled-components";
 
 function Carousel() {
   useEffect(() => {
-    let index = 1; //total : 4
+    let index = 1;
     let id = setInterval(() => {
       let prvIndex = index - 1 <= 0 ? 4 : index - 1;
-      let prvLabel: any = document.querySelector(`.m${prvIndex}`);
+      let prvLabel: HTMLElement | null = document.querySelector(
+        `.m${prvIndex}`
+      );
       if (prvLabel) prvLabel.style.background = "";
-      let curr: any = document.querySelector(`#r${index}`);
-      let currLabel: any = document.querySelector(`.m${index}`);
+      let curr: HTMLInputElement | null = document.querySelector(`#r${index}`);
+      let currLabel: HTMLElement | null = document.querySelector(`.m${index}`);
       if (currLabel) currLabel.style.background = "white";
       if (curr) curr.checked = true;
       index >= 4 ? (index = 1) : index++;
@@ -29,30 +31,18 @@ function Carousel() {
           <input type='radio' id='r4' name='r1' />
 
           <div className='slide select'>
-            <img
-              src='https://images.unsplash.com/photo-1574691250077-03a929faece5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGhvdGVsc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-              alt='s1'
-            />
+            <img src={"/assets/image/car-1.jpeg"} alt='s1' />
           </div>
           <div className='slide'>
-            <img
-              src='https://images.unsplash.com/photo-1537240937103-98b1d7a1c466?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fGhvdGVsc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-              alt='s1'
-            />
+            <img src={"/assets/image/car-2.jpeg"} alt='s1' />
           </div>
           <div className='slide'>
             {" "}
-            <img
-              src='https://images.unsplash.com/photo-1596386461350-326ccb383e9f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-              alt='s1'
-            />
+            <img src={"/assets/image/car-3.jpeg"} alt='s1' />
           </div>
           <div className='slide'>
             {" "}
-            <img
-              src='https://images.unsplash.com/photo-1609517448522-2e108986b505?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzJ8fGhvdGVsc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-              alt='s1'
-            />
+            <img src={"/assets/image/car-4.jpeg"} alt='s1' />
           </div>
         </div>
         <div className='manual-slide'>

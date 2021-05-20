@@ -8,18 +8,13 @@ import {
 import { data } from "../MarkerData";
 import styled from "styled-components";
 import { RootStateOrAny, useSelector } from "react-redux";
-import { relative } from "path";
-interface Props {}
+
 const mapStyles = {
   height: "100%",
   width: "100%",
   outline: "none",
 };
 
-// const defaultCenter = {
-//   lat: -35.78845,
-//   lng: 140.96268,
-// };
 function Maps(props: any): ReactElement {
   const state = useSelector((state: RootStateOrAny) => state.showMap);
   const [selected, setSelected] = useState<any>({});
@@ -46,11 +41,10 @@ function Maps(props: any): ReactElement {
           {data.hotels.map((item) => {
             return (
               <Marker
-                key={item.name}
-                // title={item.name}
+                key={item.id}
+                title={item.name}
                 position={{ lat: +item.lat, lng: +item.lng }}
                 onClick={() => handleSelect(item)}
-                // clickable={true}
               />
             );
           })}
