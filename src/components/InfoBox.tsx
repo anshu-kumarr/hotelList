@@ -18,9 +18,10 @@ const InfoBox = (props: Props) => {
     toggle: true,
     tar: start.current,
   });
-  function handleClick(e: React.MouseEvent<HTMLInputElement>) {
+  function handleClick(event: React.MouseEvent<HTMLInputElement>) {
     setToggle((ps: stateType) => {
-      if (ps.tar !== e.target) return { toggle: !ps.toggle, tar: e.target };
+      if (ps.tar !== event.target)
+        return { toggle: !ps.toggle, tar: event.target };
       else return ps;
     });
   }
