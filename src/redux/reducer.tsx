@@ -1,10 +1,22 @@
+interface payload {
+  data: [data];
+  count: number;
+}
 interface action {
-  type: String;
-  payload: any;
+  type: string;
+  payload: payload;
+}
+
+interface data {
+  id: number;
+  email?: string;
+  first_name?: string;
+  last_name?: string;
+  avatar?: string;
 }
 interface initial {
-  hotelList: Array<object>;
-  renderList: Array<object>;
+  hotelList: Array<data>;
+  renderList: Array<data>;
   countOfHotel: number;
   displayIndex: number;
   showMap: Boolean;
@@ -32,7 +44,7 @@ export default function reducer(state = initialState, action: action) {
     case "ADD_TO_DISPLAY":
       return {
         ...state,
-        renderList: [...action.payload],
+        renderList: [...action.payload.data],
       };
     case "START":
       return {

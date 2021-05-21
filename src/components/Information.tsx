@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
+import RoomContent from "./RoomContent";
 interface Props {
   toggle: boolean;
 }
@@ -8,33 +9,9 @@ function Information({ toggle }: Props): ReactElement {
   return (
     <InformationContainer toggle={toggle}>
       <div>
-        <RoomInfo>
-          <RoomInfoIcon>
-            <HomeIcon src={"/assets/image/home.png"} />
-          </RoomInfoIcon>
-          <div>
-            <RoomInfoTitle>Entire Apartment</RoomInfoTitle>
-            <RoomInfoDesc>4 Guest 1 Bedroom 4 Guest 1 Bedroom</RoomInfoDesc>
-          </div>
-        </RoomInfo>
-        <RoomInfo>
-          <RoomInfoIcon>
-            <HomeIcon src={"/assets/image/home.png"} />
-          </RoomInfoIcon>
-          <div>
-            <RoomInfoTitle>Entire Apartment</RoomInfoTitle>
-            <RoomInfoDesc>4 Guest 1 Bedroom 4 Guest 1 Bedroom</RoomInfoDesc>
-          </div>
-        </RoomInfo>
-        <RoomInfo>
-          <RoomInfoIcon>
-            <HomeIcon src={"/assets/image/home.png"} />
-          </RoomInfoIcon>
-          <div>
-            <RoomInfoTitle>Entire Apartment</RoomInfoTitle>
-            <RoomInfoDesc>4 Guest 1 Bedroom 4 Guest 1 Bedroom</RoomInfoDesc>
-          </div>
-        </RoomInfo>
+        <RoomContent />
+        <RoomContent />
+        <RoomContent />
       </div>
       <hr />
 
@@ -53,7 +30,7 @@ function Information({ toggle }: Props): ReactElement {
 
 export default Information;
 
-const InformationContainer = styled.div<any>`
+const InformationContainer = styled.div<{ toggle: boolean }>`
   width: 100%;
   color: gray;
   ${({ toggle }) =>
@@ -70,21 +47,7 @@ const InformationContainer = styled.div<any>`
       `
       : `margin-left:-800px; transition: all 300ms ease-out`}
 `;
-const RoomInfo = styled.div`
-  display: flex;
-  padding: 10px 20px;
-`;
-const RoomInfoTitle = styled.div`
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.7);
-`;
-const RoomInfoDesc = styled.div`
-  max-width: 80%;
-`;
-const RoomInfoIcon = styled.div`
-  margin: 10px;
-  color: #42adef;
-`;
+
 const Amenities = styled.div`
   margin-top: 10px;
   display: flex;
@@ -93,9 +56,4 @@ const Amenities = styled.div`
     width: 50%;
     text-align: center;
   }
-`;
-const HomeIcon = styled.img`
-  height: 20px;
-  width: 20px;
-  object-fit: cover;
 `;

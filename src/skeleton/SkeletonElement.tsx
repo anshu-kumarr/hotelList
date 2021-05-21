@@ -6,8 +6,8 @@ function SkeletonElement() {
 
   return (
     <>
-      {state.map((item: any) => (
-        <SkeletonCard />
+      {state.map((item, id) => (
+        <SkeletonCard key={id} />
       ))}
     </>
   );

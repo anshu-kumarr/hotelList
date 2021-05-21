@@ -5,17 +5,12 @@ import styled from "styled-components";
 function Breadcrumb({ path }: { path: string }) {
   return (
     <BreadCrumb>
-      <span>
-        <Link
-          style={{ padding: "0 5px", color: "black", textDecoration: "none" }}
-          to={"/"}
-        >
-          Hotels
-        </Link>
-      </span>
+      <Link to={"/"}>
+        <LinkData>Hotels</LinkData>
+      </Link>
       <span>/</span>
-      <Link style={{ padding: "0 5px", textDecoration: "none" }} to={path}>
-        <span className='active'>Application</span>
+      <Link to={path}>
+        <LinkData className='active'>Application</LinkData>
       </Link>
     </BreadCrumb>
   );
@@ -31,4 +26,9 @@ const BreadCrumb = styled.div`
     color: rgba(0, 0, 0, 0.5);
     font-weight: 800;
   }
+`;
+const LinkData = styled.span`
+  padding: 0 5px;
+  color: black;
+  text-decoration: none;
 `;

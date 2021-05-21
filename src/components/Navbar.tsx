@@ -8,9 +8,12 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const hotelList = useSelector((state: RootStateOrAny) => state.hotelList);
   const [showMenu, setShow] = useState(false);
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const filteredData = search(e.target.value, hotelList);
-    dispatch({ type: "ADD_TO_DISPLAY", payload: filteredData });
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const filteredData = search(event.target.value, hotelList);
+    dispatch({
+      type: "ADD_TO_DISPLAY",
+      payload: { data: filteredData, count: filteredData.length },
+    });
   }
 
   return (

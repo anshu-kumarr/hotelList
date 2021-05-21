@@ -15,28 +15,44 @@ const mapStyles = {
   outline: "none",
 };
 
-function Maps(props: any): ReactElement {
+interface props {
+  toggle?: boolean;
+}
+interface markerTypes {
+  id: string;
+  name: string;
+  address: string;
+  lat: string;
+  lng: string;
+  star: string;
+  price: string;
+  review: {
+    id: number;
+    name: string;
+    data: string;
+  };
+}
+const defaultCenter = { lat: -30.27891, lng: 153.137909 };
+function Maps(props: props): ReactElement {
   const state = useSelector((state: RootStateOrAny) => state.showMap);
-  const [selected, setSelected] = useState<any>({});
-  const [center, setCenter] = useState({ lat: -30.27891, lng: 153.137909 });
-  function handleSelect(item: any) {
-    setCenter({ lat: +item.lat, lng: +item.lng });
+  const [selected, setSelected] = useState<markerTypes | null>(null);
+  function handleSelect(item: markerTypes) {
     setSelected(item);
   }
 
   return (
     <MapDisplay toggle={state}>
-      <LoadScript googleMapsApiKey='AIzaSyAPvlFH6siXN9mhGa3of31-QJAOOZcI6To'>
+      <LoadScript googleMapsApiKey=''>
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={5}
-          center={center}
+          center={defaultCenter}
           options={{
             gestureHandling: "greedy",
             fullscreenControl: true,
             streetViewControl: true,
           }}
-          onClick={() => setSelected({})}
+          onClick={() => setSelected(null)}
         >
           {data.hotels.map((item) => {
             return (
@@ -49,26 +65,17 @@ function Maps(props: any): ReactElement {
             );
           })}
 
-          {selected.lat && (
+          {selected?.lat && (
             <InfoWindow
               position={{ lat: +selected.lat, lng: +selected.lng }}
-              onCloseClick={() => setSelected({})}
+              onCloseClick={() => setSelected(null)}
               options={{ pixelOffset: new window.google.maps.Size(0, -40) }}
             >
               <InfoBoxContainer>
-                <InfoImage
-                  src={
-                    "http://www.jjtravelonline.com/images/inner-services/hotel-inner.png"
-                  }
-                />
+                <InfoImage src={"/assets/image/hotel-inner.png"} />
                 <InfoTitle>{selected.name}</InfoTitle>
                 <Popularity>
-                  <img
-                    src={
-                      "https://image.flaticon.com/icons/png/512/906/906338.png"
-                    }
-                    alt='feed'
-                  ></img>
+                  <img src={"/assets/image/list-icon.png"} alt='feed'></img>
                   <div>
                     <span>RARE FIND</span> This place is usually booked.
                   </div>

@@ -18,7 +18,7 @@ function HamMenu({ show }: props) {
 
 export default HamMenu;
 
-const Menu = styled.div<any>`
+const Menu = styled.div<{ show: boolean }>`
   display: none;
   position: absolute;
   right: 0;

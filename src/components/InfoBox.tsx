@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Information from "./Information";
 import Reviews from "./Reviews";
-import Carousel from "./Carousel";
 import styled from "styled-components";
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 }
 interface stateType {
   toggle: boolean;
-  tar: HTMLElement | undefined;
+  tar?: EventTarget;
 }
 
 const InfoBox = (props: Props) => {
@@ -20,7 +19,7 @@ const InfoBox = (props: Props) => {
     tar: start.current,
   });
   function handleClick(e: React.MouseEvent<HTMLInputElement>) {
-    setToggle((ps: any) => {
+    setToggle((ps: stateType) => {
       if (ps.tar !== e.target) return { toggle: !ps.toggle, tar: e.target };
       else return ps;
     });
@@ -29,13 +28,13 @@ const InfoBox = (props: Props) => {
   return (
     <InfoBoxContainer>
       <InfoImage>
-        <Carousel />
+        <HotelImage src={"/assets/image/hotel-inner.png"} />
       </InfoImage>
       <InfoTitle>{props.title}</InfoTitle>
       <Hr />
       <InfoTab>
         <TabIndicator toggle={state.toggle}></TabIndicator>
-        <InfoButton ref={start} onClick={handleClick} toggle={state.toggle}>
+        <InfoButton onClick={handleClick} toggle={state.toggle}>
           Info
         </InfoButton>
         <ReviewButton onClick={handleClick} toggle={state.toggle}>
@@ -78,7 +77,7 @@ const InfoTab = styled.div`
   margin-bottom: 10px;
   position: relative;
 `;
-const InfoButton = styled.div<{ toggle: boolean; ref: any }>`
+const InfoButton = styled.div<{ toggle: boolean }>`
   cursor: pointer;
   padding: 3px;
   margin-bottom: 5px;
@@ -115,4 +114,8 @@ const TabIndicator = styled.div<{ toggle: boolean }>`
   transition: 0.5s;
   border-radius: 4px;
   ${({ toggle }) => (toggle ? `left : 0` : `left:50%`)}
+`;
+const HotelImage = styled.img`
+  object-fit: cover;
+  height: 200px;
 `;

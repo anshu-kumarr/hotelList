@@ -18,7 +18,7 @@ function HotelDetail(props: props) {
         <Availability>Entire Apartment</Availability>
         <Title>{props.title}</Title>
         <Popularity>
-          <img src={"assets/image/list-icon.png"} alt='feed'></img>
+          <PopImg src={"assets/image/list-icon.png"} alt='feed' />
           <p>
             <span>RARE FIND</span> This place is usually booked.
           </p>
@@ -98,3 +98,4 @@ const HotelInfo = styled.div`
   padding-left: 10px;
   width: 60%;
 `;
+const PopImg = styled.img``;
