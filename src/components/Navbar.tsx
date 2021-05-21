@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
-import FontAwesome from "react-fontawesome";
 import styled from "styled-components";
 import search from "../search";
 import HamMenu from "./HamMenu";
 
 export default function Navbar() {
   const dispatch = useDispatch();
-  const state = useSelector((state: RootStateOrAny) => state.hotelList);
+  const hotelList = useSelector((state: RootStateOrAny) => state.hotelList);
   const [showMenu, setShow] = useState(false);
-  function handleChange(e: any) {
-    const filteredData = search(e.target.value, state);
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const filteredData = search(e.target.value, hotelList);
     dispatch({ type: "ADD_TO_DISPLAY", payload: filteredData });
   }
 
@@ -25,22 +24,18 @@ export default function Navbar() {
         }}
       >
         <NavBarIcon>
-          <FontAwesome name='building' size='2x' />
+          <HotelIcon src={"/assets/image/hotel.jpeg"} />
         </NavBarIcon>
         <NavBarInputBox>
           <NavBarInput
             onChange={handleChange}
             placeholder='Search'
           ></NavBarInput>
-          <FontAwesome
-            style={{ color: "gray" }}
-            className='search'
-            name='search'
-          />
+          <SearchIcon src={"/assets/image/search.png"} className='search' />
         </NavBarInputBox>
       </div>
       <Hamburger onClick={() => setShow((p) => !p)}>
-        <FontAwesome name='bars' size='2x' />
+        <HamIcon src={"/assets/image/hamburger.png"} />
       </Hamburger>
       <HamMenu show={showMenu} />
       <NavBarLink>
@@ -88,7 +83,7 @@ const NavBarInputBox = styled.div`
   justify-content: flex-end;
   align-items: center;
   .search {
-    font-size: 1.5rem;
+    width: 20px;
     position: absolute;
     padding: 0.5rem;
     right: 0;
@@ -120,4 +115,13 @@ const Hamburger = styled.div`
     width: 50%;
     justify-content: flex-end;
   }
+`;
+const SearchIcon = styled.img``;
+const HamIcon = styled.img`
+  width: 40px;
+`;
+const HotelIcon = styled.img`
+  width: 40px;
+  object-fit: cover;
+  padding: 0 2px;
 `;

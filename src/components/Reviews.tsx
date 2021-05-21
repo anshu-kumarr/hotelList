@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-import FontAwesome from "react-fontawesome";
 import styled from "styled-components";
 
 interface Props {
@@ -11,7 +10,7 @@ function Reviews({ toggle }: Props): ReactElement {
     <ReviewsContainer toggle={toggle}>
       <ReviewBox>
         <ReviewHead>
-          <FontAwesome style={{ color: "#178fda" }} name='user' size='3x' />
+          <UserIcon src={"/assets/image/user.webp"} />
           <ReviewTime>
             <div style={{ fontWeight: 600 }}>Person</div> <div>May 4 2020</div>
           </ReviewTime>
@@ -26,7 +25,7 @@ function Reviews({ toggle }: Props): ReactElement {
       </ReviewBox>
       <ReviewBox>
         <ReviewHead>
-          <FontAwesome style={{ color: "#178fda" }} name='user' size='3x' />
+          <UserIcon src={"/assets/image/user.webp"} />
           <ReviewTime>
             <div style={{ fontWeight: 600 }}>Person</div> <div>May 4 2020</div>
           </ReviewTime>
@@ -41,7 +40,7 @@ function Reviews({ toggle }: Props): ReactElement {
       </ReviewBox>
       <ReviewBox>
         <ReviewHead>
-          <FontAwesome style={{ color: "#178fda" }} name='user' size='3x' />
+          <UserIcon src={"/assets/image/user.webp"} />
           <ReviewTime>
             <div style={{ fontWeight: 600 }}>Person</div> <div>May 4 2020</div>
           </ReviewTime>
@@ -91,4 +90,8 @@ const ReviewBody = styled.div`
   font-size: 0.8rem;
   padding: 10px 0;
   color: grey;
+`;
+const UserIcon = styled.img`
+  width: 40px;
+  object-fit: cover;
 `;

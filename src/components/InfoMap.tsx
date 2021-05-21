@@ -7,6 +7,10 @@ import {
 } from "@react-google-maps/api";
 import styled from "styled-components";
 
+interface markerType {
+  name: string;
+  address: string;
+}
 function InfoMap(): ReactElement {
   const mapStyles = {
     height: "100%",
@@ -18,9 +22,12 @@ function InfoMap(): ReactElement {
     lng: 2.1734,
   };
 
-  const [selected, setSelected] = useState<any>({});
+  const [selected, setSelected] = useState<markerType>({
+    name: "",
+    address: "",
+  });
 
-  const onSelect = (item: any) => {
+  const onSelect = (item: markerType) => {
     setSelected(item);
   };
 
@@ -32,7 +39,7 @@ function InfoMap(): ReactElement {
           zoom={13}
           center={defaultCenter}
           options={{ gestureHandling: "greedy" }}
-          onClick={() => setSelected({})}
+          onClick={() => setSelected({ name: "", address: "" })}
         >
           {
             <Marker
@@ -51,7 +58,7 @@ function InfoMap(): ReactElement {
           {selected.name && (
             <InfoWindow
               position={defaultCenter}
-              onCloseClick={() => setSelected({})}
+              onCloseClick={() => setSelected({ name: "", address: "" })}
               options={{ pixelOffset: new window.google.maps.Size(0, -40) }}
             >
               <>

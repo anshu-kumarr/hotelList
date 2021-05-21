@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
-import FontAwesome from "react-fontawesome";
 interface Props {
   toggle: boolean;
 }
@@ -11,7 +10,7 @@ function Information({ toggle }: Props): ReactElement {
       <div>
         <RoomInfo>
           <RoomInfoIcon>
-            <FontAwesome name='home' size='2x' />{" "}
+            <HomeIcon src={"/assets/image/home.png"} />
           </RoomInfoIcon>
           <div>
             <RoomInfoTitle>Entire Apartment</RoomInfoTitle>
@@ -20,7 +19,7 @@ function Information({ toggle }: Props): ReactElement {
         </RoomInfo>
         <RoomInfo>
           <RoomInfoIcon>
-            <FontAwesome name='home' size='2x' />{" "}
+            <HomeIcon src={"/assets/image/home.png"} />
           </RoomInfoIcon>
           <div>
             <RoomInfoTitle>Entire Apartment</RoomInfoTitle>
@@ -29,7 +28,7 @@ function Information({ toggle }: Props): ReactElement {
         </RoomInfo>
         <RoomInfo>
           <RoomInfoIcon>
-            <FontAwesome name='home' size='2x' />{" "}
+            <HomeIcon src={"/assets/image/home.png"} />
           </RoomInfoIcon>
           <div>
             <RoomInfoTitle>Entire Apartment</RoomInfoTitle>
@@ -94,4 +93,9 @@ const Amenities = styled.div`
     width: 50%;
     text-align: center;
   }
+`;
+const HomeIcon = styled.img`
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
 `;
