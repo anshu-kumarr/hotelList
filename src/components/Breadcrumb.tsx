@@ -23,7 +23,7 @@ const BreadCrumb = styled.div`
   padding: 10px;
   display: block;
   .active {
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.4);
     font-weight: 800;
   }
 `;
